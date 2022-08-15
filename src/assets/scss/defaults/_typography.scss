@@ -1,0 +1,147 @@
+@import '../variables';
+
+@mixin text-mixin {
+  font-family: 'Public Sans';
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+
+  &.secondary-link {
+    color: var(--text-secondary);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+[class^="feather-"], [class*=" feather-"] {
+  line-height: inherit;
+}
+
+hr {
+  border-color: var(--color-border);
+}
+
+.pointer-none {
+  pointer-events: none;
+}
+
+.pointer-hint {
+  cursor: help;
+}
+
+.popover {
+  border: none;
+  box-shadow: rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px;
+
+  &-header {
+    padding: 15px 15px 8px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: initial;
+    border: none;
+    background-color: transparent;
+  }
+
+  &-body {
+    padding: 0 15px 15px 15px;
+    font-size: 13px;
+    font-weight: 400;
+  }
+}
+
+h1 {
+  @include text-mixin;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+}
+
+h2 {
+  @include text-mixin;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 64px;
+}
+
+h3 {
+  @include text-mixin;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+h4 {
+  @include text-mixin;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+h5 {
+  @include text-mixin;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+h6 {
+  @include text-mixin;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p {
+  @include text-mixin;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-body-1 {
+  @include text-mixin;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-body-2 {
+  @include text-mixin;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.text-body-3 {
+  @include text-mixin;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.text-body-4 {
+  @include text-mixin;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.text-caption {
+  @include text-mixin;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-disabled {
+  color: var(--text-disabled);
+}
+

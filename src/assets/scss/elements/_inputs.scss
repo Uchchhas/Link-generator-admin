@@ -1,0 +1,183 @@
+@import '../variables';
+
+@mixin floating-label-mixin {
+  width: initial;
+  height: initial;
+  top: -16px;
+  left: 8px;
+  padding: 0.3rem 0.75rem;
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 13px;
+  opacity: 1;
+  background-color: var(--bs-white);
+  transform: none;
+}
+
+.form-control, .form-select {
+  padding: 16.5px 14px;
+  border-radius: 8px;
+  border-color: rgba(145, 158, 171, 0.32);
+
+  &.input-xs {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+
+  &.input-sm {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  &.input-md {
+    height: 50px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--text-disabled);
+  }
+}
+
+textarea {
+  &.form-control {
+    min-height: calc(1.5em + 6.75rem + 2px);
+  }
+}
+
+.form-check {
+  position: relative;
+}
+
+.form-check-input {
+  width: 1.3em;
+  height: 1.3em;
+  position: relative;
+  z-index: 1;
+
+  ~ .overlay {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: -11px;
+    top: -7px;
+    display: inline-block;
+    z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 50%;
+    background-color: rgba(0, 171, 85, 0.08);
+    transition: 0.35s;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    ~ .overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-group-iconed {
+  position: relative;
+
+  i {
+    position: absolute;
+    top: 50%;
+    color: var(--text-disabled);
+    transform: translateY(-50%);
+
+    &.prepend {
+      left: 15px;
+    }
+  }
+
+  .form-control {
+    padding-left: 40px;
+  }
+}
+
+.form-floating {
+  > .form-control,
+  > .form-select {
+    ~ label {
+      display: flex;
+      align-items: center;
+      color: var(--text-disabled);
+      transition: 0.35s;
+    }
+
+    &:focus {
+      padding-top: 10px;
+
+      ~ label {
+        @include floating-label-mixin;
+      }
+    }
+  }
+
+   > textarea {
+    ~ label {
+      align-items: flex-start !important;
+    }
+  }
+
+  > .form-select {
+    ~ label {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    > .form-control,
+    > .form-select {
+      padding-top: 10px;
+      border-color: var(--color-primary);
+
+      ~ label {
+        @include floating-label-mixin;
+      }
+    }
+  }
+}
+
+// Date and Time picker
+.form-control-date {
+  .dp__input {
+    height: calc(3.5rem + 2px);
+    padding: 10px 12px 10px 40px;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    border-radius: 8px;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+
+    &.input-sm {
+
+    }
+  }
+
+  .input-icon {
+    padding-left: 12px;
+  }
+}

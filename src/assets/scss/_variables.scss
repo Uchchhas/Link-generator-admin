@@ -1,0 +1,199 @@
+// Override Bootstrap Variables
+$primary:        #00AB55;
+$primaryLight:   #5BE584;
+$primaryLighter: #C8FACD;
+$primaryDark:    #007B55;
+$primaryDarker:  #005249;
+
+$secondary:        #3366FF;
+$secondaryLight:   #D6E4FF;
+$secondaryLighter: #84A9FF;
+$secondaryDark:    #1939B7;
+$secondaryDarker:  #091A7A;
+
+$info:        #1890FF;
+$infoLight:   #74CAFF;
+$infoLighter: #D0F2FF;
+$infoDark:    #0C53B7;
+$infoDarker:  #04297A;
+
+$success:        #54D62C;
+$successLight:   #AAF27F;
+$successLighter: #E9FCD4;
+$successDark:    #229A16;
+$successDarker:  #08660D;
+
+$warning:        #FFC107;
+$warningLight:   #FFE16A;
+$warningLighter: #FFF7CD;
+$warningDark:    #B78103;
+$warningDarker:  #7A4F01;
+
+$danger:        #FF4842;
+$dangerLight:   #FFA48D;
+$dangerLighter: #FFE7D9;
+$dangerDark:    #B72136;
+$dangerDarker:  #7A0C2E;
+
+$gray-100: #f9fafb;
+$gray-200: #f4f6f8;
+$gray-300: #dfe3e8;
+$gray-400: #c4cdd5;
+$gray-500: #919eab;
+$gray-600: #637381;
+$gray-700: #454f5b;
+$gray-800: #212b36;
+$gray-900: #161c24;
+
+$white: #fff;
+$black: #000;
+
+// Override Bootstrap Theme Colors
+$theme-colors: (
+  'primary':           $primary,
+  'primary-light':     $primaryLight,
+  'primary-lighter':   $primaryLighter,
+  'primary-dark':      $primaryDark,
+  'primary-darker':    $primaryDarker,
+  'secondary':         $secondary,
+  'secondary-light':   $secondaryLight,
+  'secondary-lighter': $secondaryLighter,
+  'secondary-dark':    $secondaryDark,
+  'secondary-darker':  $secondaryDarker,
+  'success':           $success,
+  'success-light':     $successLight,
+  'success-lighter':   $successLighter,
+  'success-dark':      $successDark,
+  'success-darker':    $successDarker,
+  'info':              $info,
+  'info-light':        $infoLight,
+  'info-lighter':      $infoLighter,
+  'info-dark':         $infoDark,
+  'info-darker':       $infoDarker,
+  'warning':           $warning,
+  'warning-light':     $warningLight,
+  'warning-lighter':   $warningLighter,
+  'warning-dark':      $warningDark,
+  'warning-darker':    $warningDarker,
+  'danger':            $danger,
+  'danger-light':      $dangerLight,
+  'danger-lighter':    $dangerLighter,
+  'danger-dark':       $dangerDark,
+  'danger-darker':     $dangerDarker
+);
+
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+);
+
+$topbar-height: 92px;
+$topbar-height-mobile: 64px;
+$sidebar-width: 280px;
+$sidebar-width-mini: 82px;
+$radius: 12px;
+
+:root {
+  --color-primary: #{$primary};
+  --color-primary-light: #{$primaryLight};
+  --color-primary-lighter: #{$primaryLighter};
+  --color-primary-dark: #{$primaryDark};
+  --color-primary-darker: #{$primaryDarker};
+
+  --color-secondary: #{$secondary};
+  --color-secondary-light: #{$secondaryLight};
+  --color-secondary-lighter: #{$secondaryLighter};
+  --color-secondary-dark: #{$secondaryDark};
+  --color-secondary-darker: #{$secondaryDarker};
+
+  --color-info: #{$info};
+  --color-info-light: #{$infoLight};
+  --color-info-lighter: #{$infoLighter};
+  --color-info-dark: #{$infoDark};
+  --color-info-darker: #{$infoDarker};
+
+  --color-success: #{$success};
+  --color-success-light: #{$successLight};
+  --color-success-lighter: #{$successLighter};
+  --color-success-dark: #{$successDark};
+  --color-success-darker: #{$successDarker};
+
+  --color-warning: #{$warning};
+  --color-warning-light: #{$warningLight};
+  --color-warning-lighter: #{$warningLighter};
+  --color-warning-dark: #{$warningDark};
+  --color-warning-darker: #{$warningDarker};
+
+  --color-danger: #{$danger};
+  --color-danger-light: #{$dangerLight};
+  --color-danger-lighter: #{$dangerLighter};
+  --color-danger-dark: #{$dangerDark};
+  --color-danger-darker: #{$dangerDarker};
+
+  --gray-100: #{$gray-100};
+  --gray-200: #{$gray-200};
+  --gray-300: #{$gray-300};
+  --gray-400: #{$gray-400};
+  --gray-500: #{$gray-500};
+  --gray-600: #{$gray-600};
+  --gray-700: #{$gray-700};
+  --gray-800: #{$gray-800};
+  --gray-900: #{$gray-900};
+
+  --shadow-primary:   0px 8px 16px rgba(0, 171, 85, 0.24);
+  --shadow-secondary: 0px 8px 16px rgba(51, 102, 255, 0.24);
+  --shadow-info:      0px 8px 16px rgba(24, 144, 255, 0.24);
+  --shadow-success:   0px 8px 16px rgba(84, 214, 44, 0.24);
+  --shadow-warning:   0px 8px 16px rgba(255, 193, 7, 0.24);
+  --shadow-error:     0px 8px 16px rgba(255, 72, 66, 0.24);
+
+  --shadow-1: 0px 1px 2px rgba(145, 158, 171, 0.16);
+  --shadow-2: 0px 8px 16px rgba(145, 158, 171, 0.16);
+  --shadow-3: 0px 12px 24px -4px rgba(145, 158, 171, 0.16);
+  --shadow-4: 0px 16px 32px -4px rgba(145, 158, 171, 0.16);
+  --shadow-5: 0px 20px 40px -4px rgba(145, 158, 171, 0.16);
+  --shadow-6: 0px 24px 48px rgba(145, 158, 171, 0.16);
+  --shadow-7: 0px 0px 2px rgba(145, 158, 171, 0.2), 0px 12px 24px -4px rgba(145, 158, 171, 0.12);
+  --shadow-8: -40px 40px 80px -8px rgba(145, 158, 171, 0.24);
+  --shadow-9: 0px 0px 2px rgba(145, 158, 171, 0.24), -20px 20px 40px -4px rgba(145, 158, 171, 0.24);
+
+  --text-primary:   #{$gray-800};
+  --text-secondary: #{$gray-600};
+  --text-disabled:  #{$gray-500};
+
+  --bg-default: #{$white};
+  --bg-paper:   #{$white};
+  --bg-neutral: #{$gray-200};
+
+  --color-border: #{$gray-300};
+  --color-border-2: rgba(145, 158, 171, 0.32);
+}
+
+[theme='dark'] {
+  --shadow-1: 0px 1px 2px rgba(0, 0, 0, 0.16);
+  --shadow-2: 0px 8px 16px rgba(0, 0, 0, 0.16);
+  --shadow-3: 0px 12px 24px -4px rgba(0, 0, 0, 0.16);
+  --shadow-4: 0px 16px 32px -4px rgba(0, 0, 0, 0.16);
+  --shadow-5: 0px 20px 40px -4px rgba(0, 0, 0, 0.16);
+  --shadow-6: 0px 24px 48px rgba(0, 0, 0, 0.16);
+  --shadow-7: 0px 0px 2px rgba(0, 0, 0, 0.2), 0px 12px 24px -4px rgba(0, 0, 0, 0.12);
+  --shadow-8: -40px 40px 80px -8px rgba(0, 0, 0, 0.24);
+  --shadow-9: 0px 0px 2px rgba(0, 0, 0, 0.24), -20px 20px 40px -4px rgba(0, 0, 0, 0.24);
+
+  --text-primary:   #{$white};
+  --text-secondary: #{$gray-500};
+  --text-disabled:  #{$gray-600};
+
+  --bg-default: #{$gray-900};
+  --bg-paper:   #{$gray-800};
+  --bg-neutral: rgba(145, 158, 171, 0.16);
+
+  --color-border: #{$gray-300}
+}

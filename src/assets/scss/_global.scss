@@ -1,0 +1,16 @@
+@import 'variables';
+
+body {
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Public Sans', sans-serif;
+}
+
+.border-color-2 {
+  border-color: var(--color-border-2) !important;
+}
+
+.loading-opacity {
+  background-color: rgba($primary, 0.15);
+}

@@ -1,0 +1,18 @@
+.modal {
+  --bs-modal-zindex: 9999;
+  --bs-modal-padding: 1.5rem;
+  --bs-modal-header-padding: 1.5rem 1.5rem;
+  --bs-modal-header-padding-y: 1.5rem;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
+
+.modal-backdrop {
+  --bs-backdrop-zindex: 9998;
+}

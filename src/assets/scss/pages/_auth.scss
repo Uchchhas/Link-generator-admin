@@ -1,0 +1,29 @@
+@import '../variables';
+
+.auth-page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  padding: 20px;
+
+  .auth-page-intro {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+  }
+
+  .auth-page-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .form-wrapper {
+      width: 480px;
+      margin: 0 auto;
+    }
+  }
+}
