@@ -115,7 +115,7 @@
                     {
                         url: '/workspaces',
                         icon: 'users',
-                        title: 'Workspaces'
+                        title: 'Team'
                     },
                 ]
             });
