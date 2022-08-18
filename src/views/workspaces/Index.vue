@@ -1,6 +1,6 @@
 <template>
     <layout>
-        <breadcrumb title="Workspaces"
+        <breadcrumb title="Team"
                     :show-hint="true"
                     :hint="{
                         title: 'Workspaces and Teammates',
@@ -12,7 +12,7 @@
                     class="btn btn-primary text-white"
                     data-bs-toggle="modal"
                     data-bs-target="#createWorkspaceModal">
-                <i class="feather-plus me-2"/> Add New Workspace
+                <i class="feather-plus me-2"/> Add New Team
             </button>
         </breadcrumb>
 

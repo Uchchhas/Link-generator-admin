@@ -8,8 +8,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header pb-0">
-                    <h5 class="modal-title" id="createWorkspaceModalLabel">Create Workspace</h5>
-                    <button type="button" class="btn-icon btn-icon-transparent" data-bs-dismiss="modal"
+                    <h5 class="modal-title" id="createWorkspaceModalLabel">Create Team</h5>
+                    <button type="button" class="btn-icon btn-icon-transparent"
+                            data-bs-dismiss="modal"
                             aria-label="Close">
                         <CloseIcon/>
                     </button>

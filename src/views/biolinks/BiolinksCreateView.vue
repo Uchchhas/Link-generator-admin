@@ -557,104 +557,93 @@
                 <div class="preview-content">
                     <div class="mobile-wrapper"
                          :style="`
-                        font-family: ${appearanceList.font.fontFamily};
-                        background-color: ${appearanceList.background.color.value};
-                        background-image: url(${appearanceList.background.selectedBackgroundType === 'image' ? appearanceList.background.image.value : appearanceList.background.gradient.value});
-                     `">
-                        <div class="d-flex justify-content-center text-center"
+                            color: ${appearanceList.font.color};
+                            font-family: ${appearanceList.font.fontFamily};
+                            background-color: ${appearanceList.background.color.value};
+                            background-image: ${
+                                 appearanceList.background.selectedBackgroundType === 'image' ?
+                                 `url(${appearanceList.background.image.value})` :
+                                 appearanceList.background.gradient.value
+                            };
+                        `">
+                        <div class="mobile-wrapper-share">
+                            <button type="button"
+                                    class="biolink-preview-page-share-button"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#shareModal">
+                                <share-icon-two/>
+                            </button>
+                        </div>
+                        <div class="d-flex flex-column align-items-stretch justify-content-center text-center"
                              v-for="(previewItem, previewItemIndex) in contentWidgetList"
                              :key="`preview-item-${previewItemIndex}`">
-                            <div v-if="previewItem.type === 'Image' && previewItem.status" class="mb-2">
+                            <div v-if="previewItem.type === 'Image' && previewItem.status" class="mb-3">
                                 <img
                                     v-if="previewItem.content.src"
-                                    width="45"
-                                    height="45"
+                                    width="60"
+                                    height="60"
                                     :src="previewItem.content.src"
-                                    class="rounded-circle"
+                                    class="rounded"
                                     alt="Image"
                                 />
                             </div>
-                            <div v-if="previewItem.type === 'Text' && previewItem.status">
+                            <div v-if="previewItem.type === 'Text' && previewItem.status" class="mb-3">
                                 <h6 v-if="previewItem.content.title"
                                     :style="`font-family: ${appearanceList.font.fontFamily};`">
                                     {{ previewItem.content.title }}
                                 </h6>
                                 <p v-if="previewItem.content.description"
-                                   class="mb-0 text-muted"
+                                   class="mb-0"
                                    :style="`font-family: ${appearanceList.font.fontFamily};`">
                                     {{ previewItem.content.description }}
                                 </p>
                             </div>
-                            <div v-if="previewItem.type === 'Social links' && previewItem.status">
-                                <ul v-if="previewItem.content.links" class="list-unstyled d-flex">
-                                    <li class="flex-shrink-0" v-for="(link, socialIndex) in previewItem.content.links"
-                                        :key="`link-${socialIndex}`">
-                                        <a :href="link.url"
-                                           class="btn-icon btn-icon-transparent">
-                                            <img width="30" height="30" v-if="link.type === 'Email'"
-                                                 :src="require(`@/assets/images/icons/social/mail.png`)"
-                                                 alt="Email icon">
-                                            <img width="30" height="30" v-if="link.type === 'Facebook'"
-                                                 :src="require(`@/assets/images/icons/social/facebook.png`)"
-                                                 alt="Facebook icon">
-                                            <img width="30" height="30" v-if="link.type === 'Twitter'"
-                                                 :src="require(`@/assets/images/icons/social/twitter.png`)"
-                                                 alt="Twitter icon">
-                                            <img width="30" height="30" v-if="link.type === 'Instagram'"
-                                                 :src="require(`@/assets/images/icons/social/instagram.png`)"
-                                                 alt="Instagram icon">
-                                            <img width="30" height="30" v-if="link.type === 'TikTok'"
-                                                 :src="require(`@/assets/images/icons/social/tiktok.png`)"
-                                                 alt="TikTok icon">
-                                            <img width="30" height="30" v-if="link.type === 'Youtube'"
-                                                 :src="require(`@/assets/images/icons/social/youtube.png`)"
-                                                 alt="Youtube icon">
-                                            <img width="30" height="30" v-if="link.type === 'SoundCloud'"
-                                                 :src="require(`@/assets/images/icons/social/soundcloud.png`)"
-                                                 alt="SoundCloud icon">
-                                            <img width="30" height="30" v-if="link.type === 'Basecamp'"
-                                                 :src="require(`@/assets/images/icons/social/basecamp.png`)"
-                                                 alt="Basecamp icon">
-                                            <img width="30" height="30" v-if="link.type === 'Linkedin'"
-                                                 :src="require(`@/assets/images/icons/social/linkedin.png`)"
-                                                 alt="Linkedin icon">
-                                            <img width="30" height="30" v-if="link.type === 'WhatsApp'"
-                                                 :src="require(`@/assets/images/icons/social/whatsapp.png`)"
-                                                 alt="WhatsApp icon">
-                                            <img width="30" height="30" v-if="link.type === 'Telegram'"
-                                                 :src="require(`@/assets/images/icons/social/telegram.png`)"
-                                                 alt="Telegram icon">
-                                            <img width="30" height="30" v-if="link.type === 'Twitch'"
-                                                 :src="require(`@/assets/images/icons/social/twitch.png`)"
-                                                 alt="Twitch icon">
-                                            <img width="30" height="30" v-if="link.type === 'Patreon'"
-                                                 :src="require(`@/assets/images/icons/social/patreon.png`)"
-                                                 alt="Patreon icon">
-                                            <img width="30" height="30" v-if="link.type === 'Pinterest'"
-                                                 :src="require(`@/assets/images/icons/social/pinterest.png`)"
-                                                 alt="Pinterest icon">
-                                            <img width="30" height="30" v-if="link.type === 'Spotify'"
-                                                 :src="require(`@/assets/images/icons/social/spotify.png`)"
-                                                 alt="Spotify icon">
-                                            <img width="30" height="30" v-if="link.type === 'Amazon'"
-                                                 :src="require(`@/assets/images/icons/social/amazon-pay.png`)"
-                                                 alt="Amazon icon">
-                                            <img width="30" height="30" v-if="link.type === 'Snapchat'"
-                                                 :src="require(`@/assets/images/icons/social/snapchat.png`)"
-                                                 alt="Snapchat icon">
-                                            <img width="30" height="30" v-if="link.type === 'Apple music'"
-                                                 :src="require(`@/assets/images/icons/social/music.png`)"
-                                                 alt="Apple music icon">
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div v-if="previewItem.type === 'Social links' && previewItem.status" class="mb-3">
+                                <div v-if="previewItem.content.links" class="social-menu">
+                                    <ul class="list-unstyled">
+                                        <li v-for="(link, socialIndex) in previewItem.content.links"
+                                            :key="`link-${socialIndex}`"
+                                            :class="{'mb-1' : socialIndex !== previewItem.content.links.length -1}">
+                                            <div class="link">
+                                                <a :href="link.url" target="_blank">
+                                                    <i v-if="link.type === 'Email'" class="feather-mail"/>
+                                                    <i v-if="link.type === 'Facebook'" class="feather-facebook"/>
+                                                    <i v-if="link.type === 'Twitter'" class="feather-twitter"/>
+                                                    <i v-if="link.type === 'Instagram'" class="feather-instagram"/>
+                                                    <i v-if="link.type === 'TikTok'" class="feather-music"/>
+                                                    <i v-if="link.type === 'Youtube'" class="feather-youtube"/>
+                                                    <i v-if="link.type === 'SoundCloud'" class="feather-cloud"/>
+                                                    <i v-if="link.type === 'Basecamp'" class="feather-codepen"/>
+                                                    <i v-if="link.type === 'Linkedin'" class="feather-linkedin"/>
+                                                    <i v-if="link.type === 'WhatsApp'" class="feather-"/>
+                                                    <i v-if="link.type === 'Telegram'" class="feather-phone"/>
+                                                    <i v-if="link.type === 'Twitch'" class="feather-"/>
+                                                    <i v-if="link.type === 'Patreon'" class="feather-mail"/>
+                                                    <i v-if="link.type === 'Pinterest'" class="feather-map-pin"/>
+                                                    <i v-if="link.type === 'Spotify'" class="feather-"/>
+                                                    <i v-if="link.type === 'Amazon'" class="feather-"/>
+                                                    <i v-if="link.type === 'Snapchat'" class="feather-"/>
+                                                    <i v-if="link.type === 'Apple music'" class="feather-"/>
+                                                    <span class="ms-3 text-capitalize">
+                                                        {{ link.type }}
+                                                    </span>
+                                                </a>
+                                                <a class="copy-icon"
+                                                   href="/"
+                                                   @click.prevent="copySocialLink('https://www.facebook.com/')">
+                                                    <i class="feather-copy fs-6"/>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div v-if="previewItem.type === 'Link' && previewItem.status">
-                                <a :href="previewItem.content.newLink" :class="`${appearanceList.button.class} mb-2`">
+                            <div v-if="previewItem.type === 'Link' && previewItem.status" class="mb-3">
+                                <a :href="previewItem.content.newLink" :class="`${appearanceList.button.class}`">
                                     {{ previewItem.content.newLink }}
                                 </a>
                             </div>
-                            <div v-if="previewItem.type === 'Youtube video' && previewItem.status">
+                            <div v-if="previewItem.type === 'Youtube video' && previewItem.status" class="mb-3">
                                 <iframe
                                     width="100%"
                                     height="250"
@@ -666,7 +655,7 @@
                                     allowfullscreen
                                 />
                             </div>
-                            <div v-if="previewItem.type === 'Soundcloud video' && previewItem.status">
+                            <div v-if="previewItem.type === 'Soundcloud video' && previewItem.status" class="mb-3">
                                 <iframe
                                     width="100%"
                                     height="250"
@@ -677,10 +666,10 @@
                                     src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1301316112&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                                 />
                             </div>
-                            <div v-if="previewItem.type === 'Vimeo video' && previewItem.status">
+                            <div v-if="previewItem.type === 'Vimeo video' && previewItem.status" class="mb-3">
                                 <div v-if="vimeoIframe" v-html="vimeoIframe"/>
                             </div>
-                            <div v-if="previewItem.type === 'Spotify embed' && previewItem.status">
+                            <div v-if="previewItem.type === 'Spotify embed' && previewItem.status" class="mb-3">
                                 <iframe
                                     v-if="spotifyIframeUrl"
                                     width="100%"
@@ -692,7 +681,7 @@
                                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                 />
                             </div>
-                            <div v-if="previewItem.type === 'Twitch embed' && previewItem.status">
+                            <div v-if="previewItem.type === 'Twitch embed' && previewItem.status" class="mb-3">
                                 <iframe
                                     src="https://clips.twitch.tv/embed?clip=InexpensiveFlirtyAlfalfaMoreCowbell-WlU5mMLVbIPJj9YW"
                                     frameborder="0"
@@ -721,6 +710,7 @@
             <AddSpotifyEmbedWidgetModal @addSpotifyWidget="addSpotifyWidget"/>
             <AddTwitchEmbedWidgetModal @addTwitchWidget="addTwitchWidget"/>
             <AddTiktokEmbedWidgetModal @addTiktokWidget="addTiktokWidget"/>
+            <share-biolink-modal/>
         </div>
     </layout>
 </template>
@@ -748,10 +738,15 @@
     import ImageUploader from "@/components/uploader/ImageUploader";
     import Layout from "@/components/layouts/Layout";
     import BiolinkSettingsTabContent from "@/components/biolink/BiolinkSettingsTabContent";
+    import ShareBiolinkModal from "@/components/biolink/ShareBiolinkModal";
+    import ShareIconTwo from "@/components/icons/ShareIconTwo";
+    import {copyToClipboard, sweetAlert} from "@/utilities/helpers";
 
     export default {
         name: 'BiolinksCreateView',
         components: {
+            ShareIconTwo,
+            ShareBiolinkModal,
             BiolinkSettingsTabContent,
             Layout,
             ImageUploader,
@@ -792,8 +787,8 @@
                     order: 2,
                     type: 'Text',
                     content: {
-                        title: '@admin',
-                        description: ''
+                        title: 'Francois Brill',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
                     },
                     status: true
                 },
@@ -804,7 +799,8 @@
                         links: [
                             {type: 'Facebook', url: '#'},
                             {type: 'Instagram', url: '#'},
-                            {type: 'Twitter', url: '#'}
+                            {type: 'Twitter', url: '#'},
+                            {type: 'Linkedin', url: '#'},
                         ]
                     },
                     status: true
@@ -813,21 +809,22 @@
             const appearanceList = ref({
                 background: {
                     color: {
-                        value: '#7ae2f3'
+                        value: '#a2ea8e'
                     },
                     gradient: {
-                        value: ''
+                        value: `linear-gradient(rgb(242 255 237), rgb(236 255 238), rgb(228 255 242))`
                     },
                     image: {
                         value: ''
                     },
-                    selectedBackgroundType: 'color'
+                    selectedBackgroundType: 'gradient'
                 },
                 font: {
+                    color: '#00ab55',
                     fontFamily: ''
                 },
                 button: {
-                    class: 'btn btn-primary'
+                    class: 'btn btn-primary',
                 }
             });
             const backgroundImageList = ref([
@@ -892,11 +889,7 @@
                 })
             }
             const addSocialLinkWidget = (value) => {
-                contentWidgetList.value.find((item) => {
-                    if (item.type === 'Social links') {
-                        item.content.links = item.content.links.concat(value)
-                    }
-                });
+                console.log(value)
             }
             const addYoutubeWidget = (value) => {
                 contentWidgetList.value.push({
@@ -1065,6 +1058,11 @@
 
             }*/
 
+            const copySocialLink = (link) => {
+                copyToClipboard(link);
+                sweetAlert('success', 'Copied link successfully');
+            }
+
             // Mounted hook
             onMounted(() => {
                 new Tooltip(document.body, {
@@ -1099,7 +1097,8 @@
                 setButtonStyle,
                 openWidgetModal,
                 removeWidget,
-                loadYoutubeUrl
+                loadYoutubeUrl,
+                copySocialLink
             }
         }
     }
