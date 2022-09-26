@@ -60,6 +60,16 @@ const routes = [
         path: '/workspaces',
         name: 'workspaces',
         component: () => import('../views/workspaces/Index')
+    },
+    {
+        path: '/settings',
+        name: 'settings',
+        component: () => import('../views/settings/Index')
+    },
+    {
+        path: '/upgrade-plan',
+        name: '/upgrade-plan',
+        component: () => import('../views/upgrade-plan/Index')
     }
 ]
 

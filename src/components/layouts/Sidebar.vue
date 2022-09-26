@@ -117,6 +117,11 @@
                         icon: 'users',
                         title: 'Team'
                     },
+                    {
+                        url: '/settings',
+                        icon: 'settings',
+                        title: 'Settings'
+                    },
                 ]
             });
 
