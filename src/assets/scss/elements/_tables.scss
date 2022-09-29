@@ -85,6 +85,34 @@
     }
   }
 
+  &-card-view-wrapper {
+    padding: 24px;
+
+    .biolink-card {
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      box-shadow: none;
+
+      .dropdown {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+         .dropdown-menu {
+           top: 100% !important;
+           right: 0 !important;
+         }
+      }
+    }
+  }
+
   &-footer-wrapper {
     padding: 20px 24px;
     display: flex;

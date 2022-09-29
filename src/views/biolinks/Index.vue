@@ -1,20 +1,35 @@
 <template>
     <layout>
         <breadcrumb title="Biolinks">
-            <button type="button"
-                    class="btn btn-primary text-white"
-                    data-bs-toggle="modal"
-                    data-bs-target="#biolinkModal">
-                <i class="feather-plus me-2"/> Add New Biolink
-            </button>
+            <div>
+                <button type="button"
+                        class="btn btn-primary text-white"
+                        data-bs-toggle="modal"
+                        data-bs-target="#biolinkModal">
+                    <i class="feather-plus me-2"/> Add New Biolink
+                </button>
+                <button type="button"
+                        class="btn btn-secondary-light ms-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#manageTeamModal">
+                    <i class="feather-user-plus"/>
+                </button>
+            </div>
         </breadcrumb>
 
         <div class="datatable">
             <div class="datatable-filter-wrapper">
                 <div class="w-100 d-flex align-items-center justify-content-between">
-                    <div class="input-group-iconed">
-                        <i class="feather-search prepend"/>
-                        <input type="text" class="form-control" placeholder="Type to search for biolinks">
+                    <div class="d-flex align-items-center">
+                        <a href="#"
+                           class="btn btn-link text-decoration-none ps-0 me-2"
+                           @click.prevent="toggleCardView">
+                            <i :class="`${isCardView ? 'feather-menu' : 'feather-grid'} fs-4`"/>
+                        </a>
+                        <div class="input-group-iconed">
+                            <i class="feather-search prepend"/>
+                            <input type="text" class="form-control" placeholder="Type to search for biolinks">
+                        </div>
                     </div>
                     <button type="button"
                             class="btn-icon btn-icon-transparent"
@@ -58,81 +73,135 @@
                     </div>
                 </div>
             </div>
-            <div class="datatable-table-wrapper">
-                <div v-if="preloader" class="position-relative">
-                    <preloader/>
-                </div>
-                <table v-else class="table mb-0">
-                    <thead>
-                    <tr>
-                        <th class="td-check">
-                            <div class="form-check mb-0">
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    id="bulkActionCheckAll"
-                                    v-model="tableData.bulkCheckAll"
-                                />
-                                <label class="form-check-label" for="bulkActionCheckAll"/>
-                                <span class="overlay"/>
-                            </div>
-                        </th>
-                        <template v-if="!tableData.selectedRows.length">
-                            <th>Name</th>
-                            <th>Links</th>
-                            <th>Public</th>
-                            <th>Rotator</th>
-                            <th></th>
-                        </template>
-                        <template v-else>
-                            <th colspan="3">
-                                {{ tableData.selectedRows.length }} item selected
-                            </th>
-                            <th colspan="2" class="text-end">
-                                <button type="button" class="btn-icon btn-icon-transparent">
-                                    <i class="feather-trash fs-5"/>
-                                </button>
-                            </th>
-                        </template>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr :class="isSelectedRow(row) ? 'tr-selected' : ''" v-for="(row, index) in tableData.rowData"
-                        :key="`row-${index}`">
-                        <td class="td-check">
-                            <div class="form-check mb-0">
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    :id="`bulkActionCheckRow-${index}`"
-                                    :checked="tableData.bulkCheckAll"
-                                    @change="isSelectedRow(row) ? removeRowFromSelection(row) : tableData.selectedRows.push(row)"
-                                />
-                                <label class="form-check-label" :for="`bulkActionCheckRow-${index}`"/>
-                                <span class="overlay"/>
-                            </div>
-                        </td>
-                        <td>{{ row.name }}</td>
-                        <td>0</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td class="text-end">
+            <div v-if="isCardView" class="datatable-card-view-wrapper">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 mb-4">
+                        <div class="card biolink-card">
+                            <button type="button"
+                                    class="btn btn-link text-decoration-none d-flex flex-column align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#biolinkModal">
+                                <i class="feather-plus-square mb-1 fs-1"/> Add New
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 mb-4"
+                         v-for="(row, index) in tableData.rowData"
+                         :key="`row-${index}`">
+                        <div class="card biolink-card">
                             <div class="dropdown dropdown-action">
                                 <button class="btn-icon btn-icon-transparent dropdown-toggle no-arrow"
                                         type="button"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false"
                                         data-notification-count="2">
-                                    <i class="feather-more-vertical fs-6"/>
+                                    <i class="feather-more-horizontal fs-6"/>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end has-arrow right-top animate scaleIn">
-                                    <li><router-link to="/dashboard" class="dropdown-item">Analytics</router-link></li>
-                                    <li><router-link to="/create-biolink" class="dropdown-item">Edit</router-link></li>
-                                    <li><a href="#" class="dropdown-item" @click.prevent="copyLink(`this is link ${index}`)">Copy link</a></li>
+                                <ul class="dropdown-menu dropdown-menu-end has-arrow top-right animate scaleIn">
+                                    <li>
+                                        <router-link to="/create-biolink" class="dropdown-item">Edit Biolink
+                                        </router-link>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Move Team</a></li>
+                                    <li>
+                                        <router-link to="/dashboard" class="dropdown-item">Analytics</router-link>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Delete Biolink</a></li>
                                 </ul>
                             </div>
-                        </td>
-                    </tr>
+                            <img width="50"
+                                 height="50"
+                                 :src="require(`@/assets/images/avatar.jpeg`)"
+                                 class="img-fluid rounded-circle mb-2"
+                                 alt="User image"/>
+                            <p class="mb-0">{{ row.name }}</p>
+                            <small class="text-secondary mb-2">{{ row.name }}</small>
+                            <span class="badge bg-success rounded-pill">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="datatable-table-wrapper">
+                <div v-if="preloader" class="position-relative">
+                    <preloader/>
+                </div>
+                <table v-else class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th class="td-check">
+                                <div class="form-check mb-0">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="bulkActionCheckAll"
+                                        v-model="tableData.bulkCheckAll"
+                                    />
+                                    <label class="form-check-label" for="bulkActionCheckAll"/>
+                                    <span class="overlay"/>
+                                </div>
+                            </th>
+                            <template v-if="!tableData.selectedRows.length">
+                                <th>Name</th>
+                                <th>Links</th>
+                                <th>Public</th>
+                                <th>Rotator</th>
+                                <th></th>
+                            </template>
+                            <template v-else>
+                                <th colspan="3">
+                                    {{ tableData.selectedRows.length }} item selected
+                                </th>
+                                <th colspan="2" class="text-end">
+                                    <button type="button" class="btn-icon btn-icon-transparent">
+                                        <i class="feather-trash fs-5"/>
+                                    </button>
+                                </th>
+                            </template>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr :class="isSelectedRow(row) ? 'tr-selected' : ''"
+                            v-for="(row, index) in tableData.rowData"
+                            :key="`row-${index}`">
+                            <td class="td-check">
+                                <div class="form-check mb-0">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        :id="`bulkActionCheckRow-${index}`"
+                                        :checked="tableData.bulkCheckAll"
+                                        @change="isSelectedRow(row) ? removeRowFromSelection(row) : tableData.selectedRows.push(row)"
+                                    />
+                                    <label class="form-check-label" :for="`bulkActionCheckRow-${index}`"/>
+                                    <span class="overlay"/>
+                                </div>
+                            </td>
+                            <td>{{ row.name }}</td>
+                            <td>0</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="text-end">
+                                <div class="dropdown dropdown-action">
+                                    <button class="btn-icon btn-icon-transparent dropdown-toggle no-arrow"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                            data-notification-count="2">
+                                        <i class="feather-more-vertical fs-6"/>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end has-arrow right-top animate scaleIn">
+                                        <li>
+                                            <router-link to="/dashboard" class="dropdown-item">Analytics</router-link>
+                                        </li>
+                                        <li>
+                                            <router-link to="/create-biolink" class="dropdown-item">Edit</router-link>
+                                        </li>
+                                        <li><a href="#" class="dropdown-item"
+                                               @click.prevent="copyLink(`this is link ${index}`)">Copy link</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -170,6 +239,7 @@
         </div>
 
         <create-biolink-modal/>
+        <manage-team-members-modal/>
     </layout>
 </template>
 
@@ -177,19 +247,21 @@
     import axios from 'axios'
     import {Tooltip} from 'bootstrap';
     import {onMounted, ref, watchEffect} from 'vue';
-    import { sweetAlert, copyToClipboard } from '@/utilities/helpers';
+    import {sweetAlert, copyToClipboard} from '@/utilities/helpers';
     import Breadcrumb from '@/components/breadcrumbs/Breadcrumb';
     import FilterIcon from "@/components/icons/FilterIcon";
     import CreateBiolinkModal from '@/components/biolink/CreateBiolinkModal';
     import Preloader from '@/components/preloaders/Preloader';
-    import Layout from "@/components/layouts/Layout";
+    import Layout from '@/components/layouts/Layout';
+    import ManageTeamMembersModal from '@/components/team/ManageTeamMembersModal';
 
     export default {
         name: 'BiolinksView',
-        components: {Layout, Preloader, CreateBiolinkModal, FilterIcon, Breadcrumb},
+        components: {ManageTeamMembersModal, Layout, Preloader, CreateBiolinkModal, FilterIcon, Breadcrumb},
         setup() {
             // Data
             const preloader = ref(false);
+            const isCardView = ref(false);
             const tableData = ref({
                 bulkCheckAll: false,
                 rowData: null,
@@ -224,11 +296,14 @@
             }
             const removeRowFromSelection = (row) => {
                 let index = tableData.value.selectedRows.indexOf(row);
-                    tableData.value.selectedRows.splice(index, 1);
+                tableData.value.selectedRows.splice(index, 1);
             }
             const copyLink = (text) => {
                 copyToClipboard(text);
                 sweetAlert('success', 'Copied link successfully');
+            }
+            const toggleCardView = () => {
+                isCardView.value = !isCardView.value;
             }
 
             // Mounted Hook
@@ -242,10 +317,12 @@
             return {
                 preloader,
                 tableData,
+                isCardView,
                 getTableData,
                 isSelectedRow,
                 removeRowFromSelection,
-                copyLink
+                copyLink,
+                toggleCardView
             }
         }
     }
