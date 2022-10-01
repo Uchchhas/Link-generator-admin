@@ -1,6 +1,6 @@
 <template>
     <header class="topbar">
-        <div class="topbar-search">
+        <!--<div class="topbar-search">
             <div class="topbar-search-input">
                 <div class="input-group">
                     <i class="feather-search"/>
@@ -12,7 +12,7 @@
                     @click="toggleSearch">
                 <i class="feather-x fs-6"/>
             </button>
-        </div>
+        </div>-->
         <div class="topbar-wrapper">
             <div class="topbar-left">
                 <button type="button"
@@ -20,11 +20,27 @@
                         @click="toggleSidebar">
                     <i class="feather-menu fs-6"/>
                 </button>
-                <button type="button"
+                <!--<button type="button"
                         class="btn-icon btn-icon-transparent"
                         @click="toggleSearch">
                     <i class="feather-search fs-6"/>
-                </button>
+                </button>-->
+                <div class="dropdown me-3">
+                    <button class="btn bg-gray-200 dropdown-toggle text-secondary py-2 d-flex align-items-center border-0"
+                            type="button"
+                            id="dropdownTeam"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            data-notification-count="2">
+                        <i class="feather-users me-2"/> <span class="text-caption">Team One</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end has-arrow top-right animate scaleIn"
+                        aria-labelledby="dropdownTeam">
+                        <li><a class="dropdown-item" href="#">Team One</a></li>
+                        <li><a class="dropdown-item" href="#">Team Two</a></li>
+                        <li><a class="dropdown-item" href="#">Team Three</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="topbar-right">
                 <div class="dropdown notification me-3">
@@ -62,6 +78,23 @@
                         </li>
                         <li><hr class="dropdown-divider dashed"></li>
                         <li><router-link class="dropdown-item text-center" to="/">Show all</router-link></li>
+                    </ul>
+                </div>
+                <div class="dropdown me-3">
+                    <button class="btn bg-gray-200 dropdown-toggle text-secondary py-2 d-flex align-items-center border-0"
+                            type="button"
+                            id="dropdownNotification"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            data-notification-count="2">
+                        <i class="feather-globe me-2"/> <span class="text-caption">EN</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end has-arrow top-right animate scaleIn"
+                        aria-labelledby="dropdownNotification">
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="#">Arabic</a></li>
+                        <li><a class="dropdown-item" href="#">Spanish</a></li>
+                        <li><a class="dropdown-item" href="#">Hindi</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">

@@ -74,6 +74,23 @@
                 </li>-->
             </ul>
         </div>
+        <div class="sidebar-footer">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="text-caption">Total usage</span>
+                <span class="badge bg-primary">65/100</span>
+            </div>
+            <div class="progress" style="height: 6px;">
+                <div class="progress-bar"
+                     role="progressbar"
+                     style="width: 65%;"
+                     aria-valuenow="65"
+                     aria-valuemin="0"
+                     aria-valuemax="100"/>
+            </div>
+            <router-link to="/upgrade-plan" class="w-100 mt-3 text-white btn btn-sm rounded btn-danger">
+                Upgrade Plan
+            </router-link>
+        </div>
     </aside>
 </template>
 
